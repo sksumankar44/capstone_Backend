@@ -20,7 +20,7 @@ const validatecreds = async (req, res) => {
     console.log("Status:", response.status);
 
     if (response.status === 200) {
-      res.status(200).cookie("token", response.token).send("Login successful");
+      res.status(200).cookie("token", response.token).send(response);
     } else {
       responseStatement(res, 400, response.message);
     }

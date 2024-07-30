@@ -82,13 +82,15 @@ const updateaccount = async (currentEmail, newEmail, newName) => {
         return response;
       }
 
-      if (existingMember.length > 0) {
+      if (existingMember.length > 1) {
         response.code = 409; // Conflict status code
         response.status = "Member with this email already exists.";
         return response;
       }
 
       updateData.email = newEmail;
+    } else {
+      updateData.email = currentEmail;
     }
 
     // Perform the update if there are fields to update

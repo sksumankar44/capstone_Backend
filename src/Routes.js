@@ -23,7 +23,7 @@ const routes = () => {
   router.use("/points", pointsrouter());
   router.use("/transactions", transactionRouter);
 
-  // router.use("/admin", adminRouter());
+  //router.use("/admin", adminRouter());
   return router;
 };
 

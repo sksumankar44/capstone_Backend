@@ -9,7 +9,7 @@ const fetchCreds = async (dataJson) => {
       .from("admin_users")
       .select("*")
       .eq("email", dataJson.email);
-
+    console.log("jhasvjbdjhsbcjhsb", data);
     if (error) {
       throw error;
     }
@@ -24,11 +24,13 @@ const fetchCreds = async (dataJson) => {
     }
 
     const token = await getJWTTokenVal({ email: dataJson.email });
-    console.log(token);
 
     response.status = 200;
     response.message = "Login successful";
+    response.userData = data[0].name;
     response.token = token;
+
+    console.log("login resposne", response);
   } catch (error) {
     response.status = 500;
     response.message = "Internal error";

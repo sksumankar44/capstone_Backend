@@ -8,7 +8,7 @@ const getJWTTokenVal = async (Data) => {
     const data = {
       email: Data.email,
     };
-    const expiresIn = "30m";
+    const expiresIn = "50m";
     const jwttoken = jwt.sign(data, process.env.JWT_SECRET, { expiresIn });
     return jwttoken;
   } catch (err) {
@@ -17,7 +17,11 @@ const getJWTTokenVal = async (Data) => {
 };
 
 const checkToken = (req, res, next) => {
-  const token = req.cookies.token;
+  // const token = req.cookies.token;
+
+  const token = req.header("x-auth-token");
+
+  console.log(token);
   if (!token) {
     return responseStatement(res, 401, "Access denied. token is missing");
   }

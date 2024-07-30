@@ -58,7 +58,17 @@ const updatePoints = async (currentPoints, dataJson) => {
       : currentPoints - pointsToAdjust;
 
   console.log("New Points: ", newPoints);
+  // Check if new points are negative
+  if (newPoints < 0) {
+    console.error("New points cannot be negative");
+    return {
+      status: false,
+      message:
+        "Points cannot be debited as it would result in a negative balance",
+    };
+  }
 
+  console.log("New Points: ", newPoints);
   try {
     let { data: updatedUserData, error: updateError } = await supabase
       .from("members")

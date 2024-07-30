@@ -1,0 +1,7 @@
+http://localhost:5050/login/validate
+Content-Type: application/json
+
+{
+    "email":"suman@gmail.com",
+    "password":"1234"
+}
