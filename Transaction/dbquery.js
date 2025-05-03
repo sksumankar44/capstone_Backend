@@ -106,6 +106,7 @@ const transactionHistory = async (dataJson) => {
         points: parseInt(points),
         admin: admin,
         description: description,
+        created_at: new Date().toISOString(),
       },
     ]);
 
